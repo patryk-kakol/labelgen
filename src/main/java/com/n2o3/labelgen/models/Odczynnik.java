@@ -17,7 +17,7 @@ public class Odczynnik {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int odczynnik_id;
+    private Long odczynnik_id;
 
     @Column(name = "nazwa", nullable = false)
     private String nazwa;
