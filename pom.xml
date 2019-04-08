@@ -6,7 +6,6 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repositories -->
 	</parent>
 	<groupId>com.n2o3</groupId>
 	<artifactId>labelgen</artifactId>
@@ -16,6 +15,7 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<start-class>com.n2o3.labelgen.LabelgenApplication</start-class>
 	</properties>
 
 	<dependencies>
@@ -58,6 +58,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+						<configuration>
+							<classifier>spring-boot</classifier>
+							<mainClass>${start-class}</mainClass>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

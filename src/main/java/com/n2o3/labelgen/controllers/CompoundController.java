@@ -1,6 +1,5 @@
 package com.n2o3.labelgen.controllers;
 
-
 import com.n2o3.labelgen.models.Compound;
 import com.n2o3.labelgen.services.CompoundService;
 import org.springframework.web.bind.annotation.CrossOrigin;
