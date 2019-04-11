@@ -1,7 +1,9 @@
-package com.n2o3.labelgen.controllers;
+package com.protolab.rest.controllers;
 
-import com.n2o3.labelgen.models.Compound;
-import com.n2o3.labelgen.services.CompoundService;
+import com.protolab.rest.models.Compound;
+import com.protolab.rest.models.PrecautionaryStatement;
+import com.protolab.rest.models.dtos.CompoundDto;
+import com.protolab.rest.services.CompoundService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,9 +22,25 @@ public class CompoundController {
         this.compoundService = compoundService;
     }
 
+    /*
+     *
+     *   DAO - Data Access Object
+     *
+     */
 
     @GetMapping("compounds")
     public List<Compound> getCompounds() {
         return compoundService.getCompounds();
+    }
+
+    /*
+     *
+     *   DTO - Data Transform Object
+     *
+     */
+
+    @GetMapping("/dto/compounds")
+    public List<CompoundDto> getCompoundsNoTimestamp() {
+        return compoundService.getCompoundsNoTimestamp();
     }
 }

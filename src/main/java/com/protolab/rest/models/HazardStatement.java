@@ -1,9 +1,11 @@
-package com.n2o3.labelgen.models;
+package com.protolab.rest.models;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.hql.internal.ast.tree.AbstractStatement;
 
 import javax.persistence.*;
 
@@ -12,12 +14,13 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "precautionary_statement")
-public class PrecautionaryStatement {
+@Table(name = "hazard_statement")
+public class HazardStatement {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "precautionary_statement_id", nullable = false)
+    @Column(name = "hazard_statement_id", nullable = false)
     private Long hazardStatementId;
 
     @Column(name = "code", nullable = false)
@@ -28,4 +31,5 @@ public class PrecautionaryStatement {
 
     @Column(name = "timestamp")
     private String timestamp;
+
 }

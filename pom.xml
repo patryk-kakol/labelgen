@@ -8,14 +8,14 @@
 		<version>2.1.4.RELEASE</version>
 	</parent>
 	<groupId>com.n2o3</groupId>
-	<artifactId>labelgen</artifactId>
+	<artifactId>protolab-rest</artifactId>
 	<version>0.0.1</version>
-	<name>labelgen</name>
-	<description>Backend for  label generator app</description>
+	<name>protolab-rest</name>
+	<description>Rest server for Protolab services</description>
 
 	<properties>
 		<java.version>11</java.version>
-		<start-class>com.n2o3.labelgen.LabelgenApplication</start-class>
+		<start-class>com.protolab.rest.ProtolabRestApplication</start-class>
 	</properties>
 
 	<dependencies>

@@ -1,7 +1,8 @@
-package com.n2o3.labelgen.controllers;
+package com.protolab.rest.controllers;
 
-import com.n2o3.labelgen.models.HazardStatement;
-import com.n2o3.labelgen.services.HazardStatementService;
+import com.protolab.rest.models.HazardStatement;
+import com.protolab.rest.models.dtos.HazardStatementDto;
+import com.protolab.rest.services.HazardStatementService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +21,25 @@ public class HazardStatementController {
         this.hazardStatementService = hazardStatementService;
     }
 
+    /*
+     *
+     *   DAO - Data Access Object
+     *
+     */
+
     @GetMapping("hazardStatements")
     public List<HazardStatement> getHazardStatements() {
         return hazardStatementService.getHazardStatements();
+    }
+
+    /*
+     *
+     *   DTO - Data Transform Object
+     *
+     */
+
+    @GetMapping("/dto/hazardStatements")
+    public List<HazardStatementDto> getHazardStatementsNoTimestamp() {
+        return hazardStatementService.getHazardStatementsNoTimestamp();
     }
 }

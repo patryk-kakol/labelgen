@@ -1,7 +1,8 @@
-package com.n2o3.labelgen.controllers;
+package com.protolab.rest.controllers;
 
-import com.n2o3.labelgen.models.PrecautionaryStatement;
-import com.n2o3.labelgen.services.PrecautionaryStatementService;
+import com.protolab.rest.models.PrecautionaryStatement;
+import com.protolab.rest.models.dtos.PrecautionaryStatementDto;
+import com.protolab.rest.services.PrecautionaryStatementService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +21,25 @@ public class PrecautionaryStatementController {
         this.precautionaryStatementService = precautionaryStatementService;
     }
 
+    /*
+     *
+     *   DAO - Data Access Object
+     *
+     */
+
     @GetMapping("/precautionaryStatements")
     public List<PrecautionaryStatement> getPrecautionaryStatemens() {
         return precautionaryStatementService.getPrecautionaryStatements();
+    }
+
+    /*
+     *
+     *   DTO - Data Transform Object
+     *
+     */
+
+    @GetMapping("/dto/precautionaryStatements")
+    public List<PrecautionaryStatementDto> getPrecautionaryStatementsNoTimestamp() {
+        return precautionaryStatementService.getPrecautionaryStatementsNoTimestamp();
     }
 }

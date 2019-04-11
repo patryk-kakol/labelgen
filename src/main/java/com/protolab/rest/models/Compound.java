@@ -1,4 +1,4 @@
-package com.n2o3.labelgen.models;
+package com.protolab.rest.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -62,6 +62,6 @@ public class Compound {
             joinColumns = @JoinColumn(name = "compound_id"),
             inverseJoinColumns = @JoinColumn(name = "precautionary_statement_id")
     )
-    List<HazardStatement> applicablePrecautionaryStatements;
+    List<PrecautionaryStatement> applicablePrecautionaryStatements;
 
 }

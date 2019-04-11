@@ -1,4 +1,4 @@
-package com.n2o3.labelgen.views;
+package com.protolab.rest.views;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
