@@ -1,11 +1,9 @@
 package com.protolab.rest.models;
 
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.hql.internal.ast.tree.AbstractStatement;
 
 import javax.persistence.*;
 
@@ -16,7 +14,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "hazard_statement")
 public class HazardStatement {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

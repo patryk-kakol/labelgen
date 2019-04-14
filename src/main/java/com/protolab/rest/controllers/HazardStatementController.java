@@ -21,22 +21,10 @@ public class HazardStatementController {
         this.hazardStatementService = hazardStatementService;
     }
 
-    /*
-     *
-     *   DAO - Data Access Object
-     *
-     */
-
     @GetMapping("hazardStatements")
     public List<HazardStatement> getHazardStatements() {
         return hazardStatementService.getHazardStatements();
     }
-
-    /*
-     *
-     *   DTO - Data Transform Object
-     *
-     */
 
     @GetMapping("/dto/hazardStatements")
     public List<HazardStatementDto> getHazardStatementsNoTimestamp() {

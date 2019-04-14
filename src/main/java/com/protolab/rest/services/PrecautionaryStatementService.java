@@ -21,21 +21,9 @@ public class PrecautionaryStatementService {
         this.precautionaryStatementMapper = precautionaryStatementMapper;
     }
 
-    /*
-     *
-     *   DAO - Data Access Object
-     *
-     */
-
     public List<PrecautionaryStatement> getPrecautionaryStatements() {
         return precautionaryStatementRepository.findAll();
     }
-
-    /*
-     *
-     *   DTO - Data Transform Object
-     *
-     */
 
     public List<PrecautionaryStatementDto> getPrecautionaryStatementsNoTimestamp() {
         return precautionaryStatementRepository

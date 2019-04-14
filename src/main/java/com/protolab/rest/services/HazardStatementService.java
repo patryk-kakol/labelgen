@@ -21,21 +21,9 @@ public class HazardStatementService {
         this.hazardStatementMapper = hazardStatementMapper;
     }
 
-    /*
-     *
-     *   DAO - Data Access Object
-     *
-     */
-
     public List<HazardStatement> getHazardStatements() {
         return hazardStatementRepository.findAll();
     }
-
-    /*
-     *
-     *   DTO - Data Transform Object
-     *
-     */
 
     public List<HazardStatementDto> getHazardStatementsNoTimestamp() {
         return hazardStatementRepository

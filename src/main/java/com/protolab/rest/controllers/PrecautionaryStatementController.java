@@ -21,22 +21,10 @@ public class PrecautionaryStatementController {
         this.precautionaryStatementService = precautionaryStatementService;
     }
 
-    /*
-     *
-     *   DAO - Data Access Object
-     *
-     */
-
     @GetMapping("/precautionaryStatements")
     public List<PrecautionaryStatement> getPrecautionaryStatemens() {
         return precautionaryStatementService.getPrecautionaryStatements();
     }
-
-    /*
-     *
-     *   DTO - Data Transform Object
-     *
-     */
 
     @GetMapping("/dto/precautionaryStatements")
     public List<PrecautionaryStatementDto> getPrecautionaryStatementsNoTimestamp() {
