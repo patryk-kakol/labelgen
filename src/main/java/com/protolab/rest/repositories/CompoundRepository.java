@@ -2,16 +2,18 @@ package com.protolab.rest.repositories;
 
 import com.protolab.rest.models.Compound;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
+
 
 @Repository
 public interface CompoundRepository extends JpaRepository<Compound, Long> {
+
+    @Query(value = "SELECT c FROM Compound c WHERE c.compoundId = ?1")
+    Optional<Compound> findCompoundByCompoundId(Long compoundId);
+
 
 //    NOT IN USE YET
 //

@@ -33,6 +33,15 @@ public class CompoundController {
         return compoundService.addCompound(compoundDto);
     }
 
+    @PutMapping("/dto/compounds")
+    public void updateCompound(@RequestBody CompoundDto compoundDto) {
+        compoundService.updateCompound(compoundDto);
+    }
+
+    @DeleteMapping("/dto/compounds/{compoundId}")
+    public void deleteCompound(@PathVariable Long compoundId) {
+        compoundService.deleteCompound(compoundId);
+    }
 //    NOT IN USE YET
 //
 //    @GetMapping("/dto/compounds")
@@ -42,10 +51,6 @@ public class CompoundController {
 //        return compoundService.getCompoundsNoTimestamp();
 //    }
 //
-//    @PutMapping("/dto/compound")
-//    public void updateCompound(@RequestBody CompoundDto compoundDto) {
-//        compoundService.updateCompound(compoundDto);
-//    }
 //
 //    @DeleteMapping("/dto/compound/{compoundName}")
 //    public void deleteCompound(@PathVariable String name) {

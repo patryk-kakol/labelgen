@@ -45,6 +45,36 @@ public class CompoundService {
                 .save(compoundMapper.reverseMap(compoundDto));
     }
 
+    public void updateCompound(CompoundDto compoundDto) {
+        compoundRepository
+                .findCompoundByCompoundId(compoundDto.getCompoundId())
+                .ifPresent(c -> {
+                    c.setName(compoundDto.getName());
+                    c.setCas(compoundDto.getCas());
+                    c.setWe(compoundDto.getWe());
+                    c.setFormula(compoundDto.getFormula());
+                    c.setUn(compoundDto.getUn());
+                    c.setBaseClass(compoundDto.getBaseClass());
+                    c.setHelperClass(compoundDto.getHelperClass());
+                    c.setPackagingGroup(compoundDto.getPackagingGroup());
+                    c.setApplicableHazardStatements(
+                            compoundDto.getHazardStatementDtos()
+                            .stream().map(hazardStatementMapper::reverseMap)
+                            .collect(Collectors.toList()));
+                    c.setApplicablePrecautionaryStatements(
+                            compoundDto.getPrecautionaryStatementDtos()
+                            .stream().map(precautionaryStatementMapper::reverseMap)
+                            .collect(Collectors.toList()));
+
+                    compoundRepository.save(c);
+                });
+    }
+
+    public void deleteCompound(Long compoundId) {
+            compoundRepository.findCompoundByCompoundId(compoundId)
+                    .ifPresent(c -> compoundRepository.delete(c));
+    }
+
 //  NOT IN USE YET
 //
 //    public List<CompoundDto> getCompoundsByNameOrFormula(String searchString) {
@@ -56,30 +86,6 @@ public class CompoundService {
 //                .collect(Collectors.toList());
 //    }
 //
-//    public void updateCompound(CompoundDto compoundDto) {
-//        compoundRepository
-//                .findCompoundByName(compoundDto.getName())
-//                .ifPresent(c -> {
-//                    c.setName(compoundDto.getName());
-//                    c.setCas(compoundDto.getCas());
-//                    c.setWe(compoundDto.getWe());
-//                    c.setFormula(compoundDto.getFormula());
-//                    c.setUn(compoundDto.getUn());
-//                    c.setBaseClass(compoundDto.getBaseClass());
-//                    c.setHelperClass(compoundDto.getHelperClass());
-//                    c.setPackagingGroup(compoundDto.getPackagingGroup());
-//                    c.setApplicableHazardStatements(
-//                            compoundDto.getHazardStatementDtos()
-//                            .stream().map(hazardStatementMapper::reverseMap)
-//                            .collect(Collectors.toList()));
-//                    c.setApplicablePrecautionaryStatements(
-//                            compoundDto.getPrecautionaryStatementDtos()
-//                            .stream().map(precautionaryStatementMapper::reverseMap)
-//                            .collect(Collectors.toList()));
-//
-//                    compoundRepository.save(c);
-//                });
-//    }
 //
 //    public void deleteCompound(String name) {
 //        compoundRepository.deleteCompoundByCompoundName(name);
