@@ -2,6 +2,7 @@ package com.protolab.rest.services;
 
 import com.protolab.rest.mappers.CompoundMapper;
 import com.protolab.rest.mappers.HazardStatementMapper;
+import com.protolab.rest.mappers.PictogramMapper;
 import com.protolab.rest.mappers.PrecautionaryStatementMapper;
 import com.protolab.rest.models.Compound;
 import com.protolab.rest.models.dtos.CompoundDto;
@@ -18,14 +19,17 @@ public class CompoundService {
     private CompoundMapper compoundMapper;
     private HazardStatementMapper hazardStatementMapper;
     private PrecautionaryStatementMapper precautionaryStatementMapper;
+    private PictogramMapper pictogramMapper;
 
     public CompoundService(CompoundRepository compoundRepository, CompoundMapper compoundMapper,
                            HazardStatementMapper hazardStatementMapper,
-                           PrecautionaryStatementMapper precautionaryStatementMapper) {
+                           PrecautionaryStatementMapper precautionaryStatementMapper,
+                           PictogramMapper pictogramMapper) {
         this.compoundRepository = compoundRepository;
         this.compoundMapper = compoundMapper;
         this.hazardStatementMapper = hazardStatementMapper;
         this.precautionaryStatementMapper = precautionaryStatementMapper;
+        this.pictogramMapper = pictogramMapper;
     }
 
     public List<Compound> getCompounds() {
@@ -65,6 +69,11 @@ public class CompoundService {
                             compoundDto.getPrecautionaryStatementDtos()
                             .stream().map(precautionaryStatementMapper::reverseMap)
                             .collect(Collectors.toList()));
+                    c.setApplicablePictograms(
+                            compoundDto.getPictogramDtos()
+                            .stream().map(pictogramMapper::reverseMap)
+                            .collect(Collectors.toList())
+                    );
 
                     compoundRepository.save(c);
                 });

@@ -12,11 +12,14 @@ public class CompoundMapper implements Mapper<Compound, CompoundDto> {
 
     private HazardStatementMapper hazardStatementMapper;
     private PrecautionaryStatementMapper precautionaryStatementMapper;
+    private PictogramMapper pictogramMapper;
 
     public CompoundMapper(HazardStatementMapper hazardStatementMapper,
-                          PrecautionaryStatementMapper precautionaryStatementMapper) {
+                          PrecautionaryStatementMapper precautionaryStatementMapper,
+                          PictogramMapper pictogramMapper) {
         this.hazardStatementMapper = hazardStatementMapper;
         this.precautionaryStatementMapper = precautionaryStatementMapper;
+        this.pictogramMapper = pictogramMapper;
     }
 
     @Override
@@ -37,6 +40,9 @@ public class CompoundMapper implements Mapper<Compound, CompoundDto> {
                     .collect(Collectors.toList()))
                 .precautionaryStatementDtos(from.getApplicablePrecautionaryStatements()
                     .stream().map(precautionaryStatementMapper::map)
+                    .collect(Collectors.toList()))
+                .pictogramDtos(from.getApplicablePictograms()
+                    .stream().map(pictogramMapper::map)
                     .collect(Collectors.toList()))
                 .build();
     }
@@ -60,6 +66,9 @@ public class CompoundMapper implements Mapper<Compound, CompoundDto> {
                 .applicablePrecautionaryStatements(to.getPrecautionaryStatementDtos()
                         .stream().map(precautionaryStatementMapper::reverseMap)
                         .collect(Collectors.toList()))
+                .applicablePictograms(to.getPictogramDtos()
+                    .stream().map(pictogramMapper::reverseMap)
+                    .collect(Collectors.toList()))
                 .build();
     }
 

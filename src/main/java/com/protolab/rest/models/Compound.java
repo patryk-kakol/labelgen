@@ -64,4 +64,13 @@ public class Compound {
     )
     List<PrecautionaryStatement> applicablePrecautionaryStatements;
 
+    @ManyToMany
+    @JoinTable(
+            name = "compound_pictogram",
+            joinColumns = @JoinColumn(name = "compound_id"),
+            inverseJoinColumns = @JoinColumn(name = "pictogram_id")
+    )
+    List<Pictogram> applicablePictograms;
+
 }
+

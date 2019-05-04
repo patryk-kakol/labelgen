@@ -24,5 +24,6 @@ public class CompoundDto {
         private String packagingGroup;
         List<HazardStatementDto> hazardStatementDtos;
         List<PrecautionaryStatementDto> precautionaryStatementDtos;
+        List<PictogramDto> pictogramDtos;
 
 }
